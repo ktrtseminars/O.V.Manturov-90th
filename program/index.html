@@ -13,10 +13,74 @@
     <meta name="distribution" content="global">
     <meta name="KeyWords" content="Conference">
     <title>Program | Conference Template</title>
+    <script type="text/javascript" src="/timezone.js"></script>
+    <script type="text/javascript" src="/talks.js"></script>
+    <script>
+        function createTalk(id, speaker, university, title, description, start, duration){
+            return `
+                <table id="${id}">
+                    <tr>
+                        <td class="date" rowspan="3">
+                            <div duration="${duration}" class="talk-time-utc">${start}</div>
+                            <div class="talk-time-value"></div>
+                        </td>
+                        <td class="title">
+                            ${title}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="speaker">
+                            ${speaker} ${university ? ('(' + university + ')') : ''}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="abstract">
+                            ${description}
+                        </td>
+                    </tr>
+                </table>
+            `;
+        }
+
+        function createTaskFromJs(day, part, sec, talk, obj){
+            const id = `day_${day}_part_${part}_${sec < 1 ? 'plenary' : 'sec_' + sec}` + (sec < 1 ? '' : `_talk_${talk}`);
+            return createTalk(id, obj.speaker, obj.university, obj.title, obj.description, obj.start, obj.duration);
+        }
+
+        function setupTalks(){
+            var content = "";
+            const day_names = [
+                '1st day', '2nd day', '3rd day', '4th day', '5th day'
+            ];
+            var all_talks = get_all_talks();
+            for (let day=0; day<all_talks.length; day++){
+                content += `<h2>${day_names[day]}</h2>`
+                for (let part=0; part < all_talks[day].length; part++){
+                    for (let section=0; section < all_talks[day][part].length; section++){
+                        if (section == 0){
+                            content += createTaskFromJs(day+1, part+1, -1, -1, all_talks[day][part][section]);
+                        }
+                        else {
+                            for (let talk=0; talk <  all_talks[day][part][section].length; talk++){
+                                content += createTaskFromJs(day+1, part+1, section, talk+1, all_talks[day][part][section][talk]);
+                            }
+                        }
+                    }
+                }
+            }
+
+            document.getElementById('content-container').innerHTML = content;
+        }
+    </script>
+    <script>
+        window.onload = function() {
+            setupTalks();
+            setupTalkTimes();
+        }
+    </script>
 </head>
 
 <body>
-
     <table class="navigation">
         <tr>
             <td class="navigation">
@@ -31,604 +95,28 @@
         </tr>
     </table>
 
-    <h1>Conference Program</h1>
+    <div class="when-container">
+        <div class="when-label">
+            <h1>Conference Program</h1>
+        </div>
+        <div class="gmt-label">
+          <select name="timezone_offset" id="timezone-offset" class="timezone-box" onchange="gmtChange(this)"/>
+            <option value="-07.00">CA time</option>
+            <option value="-05.00">Chicago time</option>
+            <option value="-04.00">NY time</option>
+            <option value="+01.00">UK time</option>
+            <option value="+03.00">Athens/Moscow time</option>
+            <option value="+08.00">Chine time</option>
+            <option value="+09.00">Japan time</option>
+          </select>
+        </div>
+      </div>
 
-    <h2>February 1</h2>
-    <table>
-        <tr>
-            <td class="date" rowspan="2">
-                9:00 AM <br/> 9:30 AM
-            </td>
-            <td class="title-special">
-                Introduction
-            </td>
-        </tr>
-        <tr>
-            <td class="abstract">
-                Zoom link will be later here.
-            </td>
-        </tr>
-    </table>
-
-    <table id="Talk1.1">
-        <tr>
-            <td class="date" rowspan="3">
-                10:00 AM <br/>
-                11:00 AM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <!--td class="abstract">
-                The abstract of the talk. Notice that with MathJax you can include mathematical notation in the abstract like \(f(x)=3x-7\) or like \(h^0(X_t,\omega_{X_t}^{\otimes m})\) or whatever you want. Just notice the MathJax line in the head of this HTML document that allows this. I&rsquo;m going to blab just a tiny bit more in this abstract, but all the other abstracts below, except the ones for the plenary talks, will be just <i>Lorem Ipsum</i> text that needs to be replaced by real abstracts.
-            </td-->
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-    <table id="Talk1.2">
-        <tr>
-            <td class="date" rowspan="3">
-                12:00 PM <br/>
-                1:00 PM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <!--td class="abstract">
-                The abstract of the talk. Notice that with MathJax you can include mathematical notation in the abstract like \(f(x)=3x-7\) or like \(h^0(X_t,\omega_{X_t}^{\otimes m})\) or whatever you want. Just notice the MathJax line in the head of this HTML document that allows this. I&rsquo;m going to blab just a tiny bit more in this abstract, but all the other abstracts below, except the ones for the plenary talks, will be just <i>Lorem Ipsum</i> text that needs to be replaced by real abstracts.
-            </td-->
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-    <table id="Talk1.3">
-        <tr>
-            <td class="date" rowspan="3">
-                1:30 PM <br/>
-                2:30 PM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <!--td class="abstract">
-                The abstract of the talk. Notice that with MathJax you can include mathematical notation in the abstract like \(f(x)=3x-7\) or like \(h^0(X_t,\omega_{X_t}^{\otimes m})\) or whatever you want. Just notice the MathJax line in the head of this HTML document that allows this. I&rsquo;m going to blab just a tiny bit more in this abstract, but all the other abstracts below, except the ones for the plenary talks, will be just <i>Lorem Ipsum</i> text that needs to be replaced by real abstracts.
-            </td-->
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-    <table id="Talk1.4">
-        <tr>
-            <td class="date" rowspan="3">
-                3:00 PM <br/>
-                4:00 PM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <!--td class="abstract">
-                The abstract of the talk. Notice that with MathJax you can include mathematical notation in the abstract like \(f(x)=3x-7\) or like \(h^0(X_t,\omega_{X_t}^{\otimes m})\) or whatever you want. Just notice the MathJax line in the head of this HTML document that allows this. I&rsquo;m going to blab just a tiny bit more in this abstract, but all the other abstracts below, except the ones for the plenary talks, will be just <i>Lorem Ipsum</i> text that needs to be replaced by real abstracts.
-            </td-->
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-    <!-- table class="plenary">
-        <tr>
-            <td class="date" rowspan="3">
-                11:00am
-            </td>
-            <td class="title">
-                This is a Plenary Talk!
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Plenary Speaker
-            </td>
-        </tr>
-        <tr>
-            <td class="abstract">
-                Here&rsquo;s the abstract for the plenary talk! Notice again that the formatting of this time-block is a bit different that the rest of of the talks.
-                Filler text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dignissim et est et euismod. Fusce et metus tempus, pellentesque ex at, convallis nulla. Ut fringilla commodo tincidunt. Fusce sed est eu massa placerat iaculis eu at mauris. Nullam ut mollis nisi, quis malesuada risus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam ipsum tortor, suscipit non tincidunt vel, bibendum in libero. Nulla facilisi. Pellentesque vitae neque metus. Cras quis est pharetra, vestibulum nisl et, viverra ipsum. Etiam porta dignissim purus, quis tempor metus volutpat eu. Praesent pulvinar libero eget purus tincidunt finibus.
-            </td>
-        </tr>
-    </table -->
-
-    <h2>February 2</h2>
-
-    <table id="Talk2.1">
-        <tr>
-            <td class="date" rowspan="3">
-                09:00 AM <br/>
-                10:00 AM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-
-    <table id="Talk2.2">
-        <tr>
-            <td class="date" rowspan="3">
-                10:00 AM <br/>
-                11:00 AM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-    <table id="Talk2.3">
-        <tr>
-            <td class="date" rowspan="3">
-                12:00 PM <br/>
-                1:00 PM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-    <table id="Talk2.4">
-        <tr>
-            <td class="date" rowspan="3">
-                1:30 PM <br/>
-                2:30 PM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-    <table id="Talk2.5">
-        <tr>
-            <td class="date" rowspan="3">
-                3:00 PM <br/>
-                4:00 PM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-    <h2>February 3</h2>
-
-    <table id="Talk3.1">
-        <tr>
-            <td class="date" rowspan="3">
-                09:00 AM <br/>
-                10:00 AM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-
-    <table id="Talk3.2">
-        <tr>
-            <td class="date" rowspan="3">
-                10:00 AM <br/>
-                11:00 AM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-    <table id="Talk3.3">
-        <tr>
-            <td class="date" rowspan="3">
-                12:00 PM <br/>
-                1:00 PM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-    <table id="Talk3.4">
-        <tr>
-            <td class="date" rowspan="3">
-                1:30 PM <br/>
-                2:30 PM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-    <table id="Talk3.5">
-        <tr>
-            <td class="date" rowspan="3">
-                3:00 PM <br/>
-                4:00 PM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-    <h2>February 4</h2>
-
-    <table id="Talk4.1">
-        <tr>
-            <td class="date" rowspan="3">
-                09:00 AM <br/>
-                10:00 AM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-
-    <table id="Talk4.2">
-        <tr>
-            <td class="date" rowspan="3">
-                10:00 AM <br/>
-                11:00 AM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-    <table id="Talk4.3">
-        <tr>
-            <td class="date" rowspan="3">
-                12:00 PM <br/>
-                1:00 PM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-    <table id="Talk4.4">
-        <tr>
-            <td class="date" rowspan="3">
-                1:30 PM <br/>
-                2:30 PM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-    <table id="Talk4.5">
-        <tr>
-            <td class="date" rowspan="3">
-                3:00 PM <br/>
-                4:00 PM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-    <h2>February 5</h2>
-
-    <table id="Talk5.1">
-        <tr>
-            <td class="date" rowspan="3">
-                09:00 AM <br/>
-                10:00 AM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-
-    <table id="Talk5.2">
-        <tr>
-            <td class="date" rowspan="3">
-                10:00 AM <br/>
-                11:00 AM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-    <table id="Talk5.3">
-        <tr>
-            <td class="date" rowspan="3">
-                12:00 PM <br/>
-                1:00 PM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-    <table id="Talk5.4">
-        <tr>
-            <td class="date" rowspan="3">
-                1:30 PM <br/>
-                2:30 PM
-            </td>
-            <td class="title">
-                Talk title
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <td class="abstract">
-                This time slot is not occupied.
-            </td>
-        </tr>
-    </table>
-
-    <table id="Cloing">
-        <tr>
-            <td class="date" rowspan="3">
-                3:00 PM <br/>
-                3:30 PM
-            </td>
-            <td class="title">
-                Closing
-            </td>
-        </tr>
-        <tr>
-            <td class="speaker">
-                Speaker Name (University)
-            </td>
-        </tr>
-        <tr>
-            <td class="abstract">
-                Zoom link will be here later.
-            </td>
-        </tr>
-    </table>
-
+    <div id="content-container"></div>
 
     <footer>
-        &copy; The first knot theory congress
+        &copy; The first online knot theory congress
         &nbsp;|&nbsp; With the support of the <a href="https://www.ktrt-seminars.com" target="_blank">ktrt-seminars.com</a>
-        &nbsp;|&nbsp; Thanks <a href="https://github.com/mikepierce" target="_blank">Mike Pierce</a> for website template
     </footer>
 
 </body>
