@@ -1,64 +1,140 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="ru">
 
 <head>
     <base href=".">
     <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
     <link rel="stylesheet" type="text/css" media="all" href="assets/main.css"/>
-    <meta name="description" content="The First International On-line Knot Theory Congress">
+
+    <meta name="description" content="Первый международный онлайн-конгресс по теории узлов">
     <meta name="resource-type" content="document">
     <meta name="distribution" content="global">
-    <meta name="KeyWords" content="Conference">
-    <title>Conference for 90th memorial of O.V. Manturov</title>
+    <meta name="KeyWords" content="Конференция">
+    <title>Конференция, посвящённая 90-летию О. В. Мантурова</title>
+
+    <style>
+        .lang { display: none; }
+        .lang.active { display: block; }
+        .lang-switcher {
+            margin: 20px;
+            text-align: right;
+        }
+        .lang-switcher button {
+            padding: 6px 12px;
+            margin-left: 6px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
-    <table class="navigation">
-        <tr>
-            <td class="navigation">
-                <a title="Conference Home Page" class="navigation" href="."><p class="navigation">HOME</p></a>
-            </td>
-            <td class="navigation">
-              <a title="Conference Schedule" class="navigation" href="schedule"><p class="navigation">SCHEDULE</p></a> 
-            </td>
-            <td class="navigation">
-                <a title="Conference Program" class="navigation" href="program"><p class="navigation">PROGRAM</p></a> 
-            </td>
-        </tr>
-    </table>
 
-    <h1 class="congress-name">Conference for 90th memorial of O.V. Manturov</h1>
-    <p class="when-date">Time, place</p>
+    <!-- LANGUAGE SWITCHER -->
+    <div class="lang-switcher">
+        <button onclick="setLanguage('ru')">Русский</button>
+        <button onclick="setLanguage('en')">English</button>
+    </div>
 
-    <p>
-        Introduction
-    </p>
-    
-    <h2>Plenary speakers</h2>
-    <div class="plenary-speakers-container">
-        <div class="pl-speaker">
-            <img src="assets/Vassily_Manturov.png" alt="Vassily Manturov"><br/>
-            Vassily Manturov
+    <!-- ================= RUSSIAN VERSION (DEFAULT) ================= -->
+    <div class="lang ru active">
+        <table class="navigation">
+            <tr>
+                <td class="navigation">
+                    <a class="navigation" href="."><p class="navigation">ГЛАВНАЯ</p></a>
+                </td>
+                <td class="navigation">
+                    <a class="navigation" href="schedule"><p class="navigation">РАСПИСАНИЕ</p></a> 
+                </td>
+                <td class="navigation">
+                    <a class="navigation" href="program"><p class="navigation">ПРОГРАММА</p></a> 
+                </td>
+            </tr>
+        </table>
+
+        <h1 class="congress-name">Конференция, посвящённая 90-летию О. В. Мантурова</h1>
+        <p class="when-date">Время, место</p>
+
+        <p>Введение</p>
+        
+        <h2>Пленарные докладчики</h2>
+        <div class="plenary-speakers-container">
+            <div class="pl-speaker">
+                <img src="assets/Vassily_Manturov.png" alt="Василий Мантуров"><br/>
+                Василий Мантуров
+            </div>
+        </div>
+
+        <h2>Организационный комитет</h2>
+        <div class="sponsors-container">
+            <div class="sponsor">
+                <img src="assets/Seongjeong_Kim.png" alt="Сонгджон Ким"><br/>
+                Сонгджон Ким
+            </div>
+        </div>
+
+        <h2>Программный комитет</h2>
+        <div class="scientists-container">
+            <div class="scientist">
+                <img src="assets/Vassily_Manturov.png" alt="Василий Мантуров"><br/>
+                Василий Мантуров
+            </div>
         </div>
     </div>
 
-    <h2>Organising Committee</h2>
-    <div class="sponsors-container">
-        <div class="sponsor">
-            <img src="assets/Seongjeong_Kim.png" alt="Seongjeong Kim"><br/>
-            Seongjeong Kim
+    <!-- ================= ENGLISH VERSION ================= -->
+    <div class="lang en">
+        <table class="navigation">
+            <tr>
+                <td class="navigation">
+                    <a class="navigation" href="."><p class="navigation">HOME</p></a>
+                </td>
+                <td class="navigation">
+                    <a class="navigation" href="schedule"><p class="navigation">SCHEDULE</p></a> 
+                </td>
+                <td class="navigation">
+                    <a class="navigation" href="program"><p class="navigation">PROGRAM</p></a> 
+                </td>
+            </tr>
+        </table>
+
+        <h1 class="congress-name">Conference for 90th memorial of O.V. Manturov</h1>
+        <p class="when-date">Time, place</p>
+
+        <p>Introduction</p>
+        
+        <h2>Plenary speakers</h2>
+        <div class="plenary-speakers-container">
+            <div class="pl-speaker">
+                <img src="assets/Vassily_Manturov.png" alt="Vassily Manturov"><br/>
+                Vassily Manturov
+            </div>
+        </div>
+
+        <h2>Organising Committee</h2>
+        <div class="sponsors-container">
+            <div class="sponsor">
+                <img src="assets/Seongjeong_Kim.png" alt="Seongjeong Kim"><br/>
+                Seongjeong Kim
+            </div>
+        </div>
+
+        <h2>Program Committee</h2>
+        <div class="scientists-container">
+            <div class="scientist">
+                <img src="assets/Vassily_Manturov.png" alt="Vassily Manturov"><br/>
+                Vassily Manturov
+            </div>
         </div>
     </div>
 
-
-    <h2>Program Committee </h2>
-  <div class="scientists-container">
-      <div class="scientist">
-        <img src="assets/Vassily_Manturov.png" alt="Vassily Manturov"><br/>
-        Vassily Manturov
-      </div>
-  </div>
-
+    <!-- LANGUAGE SWITCH SCRIPT -->
+    <script>
+        function setLanguage(lang) {
+            document.querySelectorAll('.lang').forEach(el => el.classList.remove('active'));
+            document.querySelector('.' + lang).classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
+
