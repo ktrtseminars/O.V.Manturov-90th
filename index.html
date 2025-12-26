@@ -109,32 +109,35 @@
     };
 
     function setLanguage(lang) {
-        // 모든 언어 숨김
+        // 언어 표시
         document.querySelectorAll('.lang').forEach(el => {
             el.classList.remove('active');
         });
 
-        // 선택한 언어 표시
         const target = document.querySelector('.' + lang);
         if (target) {
             target.classList.add('active');
         }
 
-        // 제목 변경 (툴바 / 탭)
-        if (titles[lang]) {
-            document.title = titles[lang];
-        }
+        // 🔥 제목 강제 변경
+        document.title = titles[lang] || titles.en;
 
-        // 언어 저장
+        // 저장
         localStorage.setItem('siteLanguage', lang);
+
+        // 🔥 일부 브라우저 대응용 (확실하게)
+        setTimeout(() => {
+            document.title = titles[lang] || titles.en;
+        }, 0);
     }
 
-    // 페이지 로드 시 저장된 언어 적용
-    document.addEventListener('DOMContentLoaded', function () {
+    // 최초 로드
+    document.addEventListener('DOMContentLoaded', () => {
         const savedLang = localStorage.getItem('siteLanguage') || 'en';
         setLanguage(savedLang);
     });
 </script>
+
 
 
 </body>
