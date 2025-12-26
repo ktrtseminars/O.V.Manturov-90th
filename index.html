@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
     <base href=".">
@@ -7,10 +7,7 @@
     <link rel="stylesheet" type="text/css" media="all" href="assets/main.css"/>
 
     <meta name="description" content="Первый международный онлайн-конгресс по теории узлов">
-    <meta name="resource-type" content="document">
-    <meta name="distribution" content="global">
-    <meta name="KeyWords" content="Конференция">
-    <title>Конференция, посвящённая 90-летию О. В. Мантурова</title>
+    <title>O. V. Manturov 90 Conference</title>
 
     <style>
         .lang { display: none; }
@@ -24,102 +21,72 @@
             margin-left: 6px;
             cursor: pointer;
         }
-        .session {
-            margin-bottom: 20px;
-        }
     </style>
 </head>
 
 <body>
 
-    <!-- LANGUAGE SWITCHER -->
-    <div class="lang-switcher">
-        <button onclick="setLanguage('ru')">Русский</button>
-        <button onclick="setLanguage('en')">English</button>
-    </div>
+<div class="lang-switcher">
+    <button onclick="setLanguage('ru')">Русский</button>
+    <button onclick="setLanguage('en')">English</button>
+</div>
 
-    <!-- ================= RUSSIAN VERSION ================= -->
-    <div class="lang ru">
-        <table class="navigation">
-            <tr>
-                <td class="navigation"><a class="navigation" href="."><p class="navigation">ГЛАВНАЯ</p></a></td>
-                <td class="navigation"><a class="navigation" href="schedule"><p class="navigation">РАСПИСАНИЕ</p></a></td>
-                <td class="navigation"><a class="navigation" href="program"><p class="navigation">ПРОГРАММА</p></a></td>
-            </tr>
-        </table>
+<!-- ================= RUSSIAN VERSION ================= -->
+<div class="lang ru">
+    <h1>Конференция, посвящённая 90-летию О. В. Мантурова</h1>
 
-        <h1 class="congress-name">Конференция, посвящённая 90-летию О. В. Мантурова</h1>
-        <p class="when-date">Время, место</p>
+    <h2>Организационный комитет</h2>
+    <ul>
+        <li>Сонгджон Ким</li>
+        <li>Имя Фамилия</li>
+    </ul>
 
-        <p>Введение</p>
+    <h2>Программный комитет</h2>
+    <ul>
+        <li>Василий Мантуров</li>
+        <li>Имя Фамилия</li>
+    </ul>
 
-        <h2>Организационный комитет</h2>
-        <ul>
-            <li>Сонгджон Ким</li>
-            <li>Имя Фамилия</li>
-        </ul>
+    <h2>Секции</h2>
+    <ul>
+        <li>Секция 1: Теория узлов</li>
+        <li>Секция 2: Виртуальные узлы и графы</li>
+        <li>Секция 3: Приложения и смежные области</li>
+    </ul>
+</div>
 
-        <h2>Программный комитет</h2>
-        <ul>
-            <li>Василий Мантуров</li>
-            <li>Имя Фамилия</li>
-        </ul>
+<!-- ================= ENGLISH VERSION ================= -->
+<div class="lang en active">
+    <h1>O. V. Manturov 90 Conference</h1>
 
-        <h2>Секции</h2>
+    <h2>Organizing Committee</h2>
+    <ul>
+        <li>Seongjeong Kim</li>
+        <li>Name Surname</li>
+    </ul>
 
-        <h2>Секции</h2>
-<ul>
-    <li>Секция 1: Теория узлов</li>
-    <li>Секция 2: Виртуальные узлы и графы</li>
-    <li>Секция 3: Приложения и смежные области</li>
-</ul>
+    <h2>Program Committee</h2>
+    <ul>
+        <li>Vassily Manturov</li>
+        <li>Name Surname</li>
+    </ul>
 
+    <h2>Sessions</h2>
+    <ul>
+        <li>Session 1: Knot Theory</li>
+        <li>Session 2: Virtual Knots and Graphs</li>
+        <li>Session 3: Applications and Related Topics</li>
+    </ul>
+</div>
 
-    <!-- ================= ENGLISH VERSION ================= -->
-    <div class="lang en active">
-        <table class="navigation">
-            <tr>
-                <td class="navigation"><a class="navigation" href="."><p class="navigation">HOME</p></a></td>
-                <td class="navigation"><a class="navigation" href="schedule"><p class="navigation">SCHEDULE</p></a></td>
-                <td class="navigation"><a class="navigation" href="program"><p class="navigation">PROGRAM</p></a></td>
-            </tr>
-        </table>
-
-        <h1 class="congress-name">O. V. Manturov 90 Conference</h1>
-        <p class="when-date">Time, place</p>
-
-        <p>Introduction</p>
-
-        <h2>Organizing Committee</h2>
-        <ul>
-            <li>Seongjeong Kim</li>
-            <li>Name Surname</li>
-        </ul>
-
-        <h2>Program Committee</h2>
-        <ul>
-            <li>Vassily Manturov</li>
-            <li>Name Surname</li>
-        </ul>
-
-        <h2>Sessions</h2>
-
-      <h2>Sessions</h2>
-<ul>
-    <li>Session 1: Knot Theory</li>
-    <li>Session 2: Virtual Knots and Graphs</li>
-    <li>Session 3: Applications and Related Topics</li>
-</ul>
-
-
-    <!-- LANGUAGE SWITCH SCRIPT -->
-    <script>
-        function setLanguage(lang) {
-            document.querySelectorAll('.lang').forEach(el => el.classList.remove('active'));
-            document.querySelector('.' + lang).classList.add('active');
-        }
-    </script>
+<script>
+    function setLanguage(lang) {
+        document.querySelectorAll('.lang').forEach(el => el.classList.remove('active'));
+        document.querySelector('.' + lang).classList.add('active');
+    }
+</script>
 
 </body>
 </html>
+
 
