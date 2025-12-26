@@ -103,6 +103,11 @@
 </div>
 
 <script>
+    const titles = {
+        ru: 'Конференция, посвящённая 90-летию О. В. Мантурова',
+        en: 'O. V. Manturov 90 Conference'
+    };
+
     function setLanguage(lang) {
         // 모든 언어 숨김
         document.querySelectorAll('.lang').forEach(el => {
@@ -115,17 +120,19 @@
             target.classList.add('active');
         }
 
+        // 제목 변경 (툴바 / 탭)
+        if (titles[lang]) {
+            document.title = titles[lang];
+        }
+
         // 언어 저장
         localStorage.setItem('siteLanguage', lang);
     }
 
     // 페이지 로드 시 저장된 언어 적용
     document.addEventListener('DOMContentLoaded', function () {
-        const savedLang = localStorage.getItem('siteLanguage');
-
-        if (savedLang) {
-            setLanguage(savedLang);
-        }
+        const savedLang = localStorage.getItem('siteLanguage') || 'en';
+        setLanguage(savedLang);
     });
 </script>
 
