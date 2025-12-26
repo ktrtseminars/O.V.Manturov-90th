@@ -24,16 +24,20 @@
             cursor: pointer;
         }
 
-        table.navigation {
-            width: 100%;
+        /* ===== HEADER ABOVE NAV ===== */
+        #conference-header {
+            text-align: center;
+            margin: 20px 0 10px 0;
         }
 
-        .nav-title {
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            padding-left: 20px;
-            white-space: nowrap;
+        #conference-header h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: normal;
+        }
+
+        table.navigation {
+            width: 100%;
         }
     </style>
 </head>
@@ -46,20 +50,20 @@
     <button onclick="setLanguage('en')">English</button>
 </div>
 
+<!-- ===== CONFERENCE TITLE ABOVE BLUE BAR ===== -->
+<div id="conference-header">
+    <h1 id="conferenceTitle">O. V. Manturov 90 Conference</h1>
+</div>
+
 <!-- ================= RUSSIAN VERSION ================= -->
 <div class="lang ru">
     <table class="navigation">
         <tr>
-            <td class="nav-title" id="navTitleRu">
-                Конференция О. В. Мантурова – 90
-            </td>
             <td class="navigation"><a class="navigation" href="."><p class="navigation">ГЛАВНАЯ</p></a></td>
             <td class="navigation"><a class="navigation" href="schedule"><p class="navigation">РАСПИСАНИЕ</p></a></td>
             <td class="navigation"><a class="navigation" href="program"><p class="navigation">ПРОГРАММА</p></a></td>
         </tr>
     </table>
-
-    <h1 class="congress-name">Конференция, посвящённая 90-летию О. В. Мантурова</h1>
 
     <h2>Организационный комитет</h2>
     <ul>
@@ -85,16 +89,11 @@
 <div class="lang en active">
     <table class="navigation">
         <tr>
-            <td class="nav-title" id="navTitleEn">
-                O. V. Manturov 90 Conference
-            </td>
             <td class="navigation"><a class="navigation" href="."><p class="navigation">HOME</p></a></td>
             <td class="navigation"><a class="navigation" href="schedule"><p class="navigation">SCHEDULE</p></a></td>
             <td class="navigation"><a class="navigation" href="program"><p class="navigation">PROGRAM</p></a></td>
         </tr>
     </table>
-
-    <h1 class="congress-name">O. V. Manturov 90 Conference</h1>
 
     <h2>Organizing Committee</h2>
     <ul>
@@ -129,7 +128,7 @@
 
 <script>
     const titles = {
-        ru: 'Конференция О. В. Мантурова – 90',
+        ru: 'Конференция, посвящённая 90-летию О. В. Мантурова',
         en: 'O. V. Manturov 90 Conference'
     };
 
@@ -138,13 +137,16 @@
         const target = document.querySelector('.' + lang);
         if (target) target.classList.add('active');
 
-        document.title = titles[lang] || titles.en;
-        localStorage.setItem('siteLanguage', lang);
+        // Header title above blue bar
+        const headerTitle = document.getElementById('conferenceTitle');
+        if (headerTitle && titles[lang]) {
+            headerTitle.textContent = titles[lang];
+        }
 
-        // 브라우저 호환성 보강
-        setTimeout(() => {
-            document.title = titles[lang] || titles.en;
-        }, 0);
+        // Browser tab title
+        document.title = titles[lang] || titles.en;
+
+        localStorage.setItem('siteLanguage', lang);
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -155,6 +157,7 @@
 
 </body>
 </html>
+
 
 
 
