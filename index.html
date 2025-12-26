@@ -6,40 +6,59 @@
     <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
     <link rel="stylesheet" type="text/css" media="all" href="assets/main.css"/>
 
-    <meta name="description" content="Первый международный онлайн-конгресс по теории узлов">
+    <meta name="description" content="International conference dedicated to the 90th anniversary of O. V. Manturov">
     <title>O. V. Manturov 90 Conference</title>
 
     <style>
         .lang { display: none; }
         .lang.active { display: block; }
+
         .lang-switcher {
-            margin: 20px;
+            margin: 10px 20px;
             text-align: right;
         }
+
         .lang-switcher button {
             padding: 6px 12px;
             margin-left: 6px;
             cursor: pointer;
+        }
+
+        table.navigation {
+            width: 100%;
+        }
+
+        .nav-title {
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            padding-left: 20px;
+            white-space: nowrap;
         }
     </style>
 </head>
 
 <body>
 
+<!-- LANGUAGE SWITCHER -->
 <div class="lang-switcher">
     <button onclick="setLanguage('ru')">Русский</button>
     <button onclick="setLanguage('en')">English</button>
 </div>
 
 <!-- ================= RUSSIAN VERSION ================= -->
-<div class="lang ru"> 
-    <table class="navigation"> 
-        <tr> 
-            <td class="navigation"><a class="navigation" href="."><p class="navigation">ГЛАВНАЯ</p></a></td> 
-            <td class="navigation"><a class="navigation" href="schedule"><p class="navigation">РАСПИСАНИЕ</p></a></td> 
-            <td class="navigation"><a class="navigation" href="program"><p class="navigation">ПРОГРАММА</p></a></td> 
-        </tr> 
+<div class="lang ru">
+    <table class="navigation">
+        <tr>
+            <td class="nav-title" id="navTitleRu">
+                Конференция О. В. Мантурова – 90
+            </td>
+            <td class="navigation"><a class="navigation" href="."><p class="navigation">ГЛАВНАЯ</p></a></td>
+            <td class="navigation"><a class="navigation" href="schedule"><p class="navigation">РАСПИСАНИЕ</p></a></td>
+            <td class="navigation"><a class="navigation" href="program"><p class="navigation">ПРОГРАММА</p></a></td>
+        </tr>
     </table>
+
     <h1 class="congress-name">Конференция, посвящённая 90-летию О. В. Мантурова</h1>
 
     <h2>Организационный комитет</h2>
@@ -56,91 +75,86 @@
 
     <h2>Секции</h2>
     <ul>
-        <li>Секция 1: Теория узлов</li>
-        <li>Секция 2: Виртуальные узлы и графы</li>
-        <li>Секция 3: Приложения и смежные области</li>
+        <li>Теория узлов</li>
+        <li>Виртуальные узлы и графы</li>
+        <li>Приложения и смежные области</li>
     </ul>
 </div>
 
-<!-- ================= ENGLISH VERSION ================= --> 
-    <div class="lang en active"> 
-	<table class="navigation"> 
-		<tr> 
-			<td class="navigation"><a class="navigation" href="."><p class="navigation">HOME</p></a></td> 
-			<td class="navigation"><a class="navigation" href="schedule"><p class="navigation">SCHEDULE</p></a></td> <td class="navigation"><a class="navigation" href="program"><p class="navigation">PROGRAM</p></a></td> 
-		</tr>
-	 </table>
-    <h1 class="congress-name">O.V. Manturov-90 conference</h1>
+<!-- ================= ENGLISH VERSION ================= -->
+<div class="lang en active">
+    <table class="navigation">
+        <tr>
+            <td class="nav-title" id="navTitleEn">
+                O. V. Manturov 90 Conference
+            </td>
+            <td class="navigation"><a class="navigation" href="."><p class="navigation">HOME</p></a></td>
+            <td class="navigation"><a class="navigation" href="schedule"><p class="navigation">SCHEDULE</p></a></td>
+            <td class="navigation"><a class="navigation" href="program"><p class="navigation">PROGRAM</p></a></td>
+        </tr>
+    </table>
+
+    <h1 class="congress-name">O. V. Manturov 90 Conference</h1>
 
     <h2>Organizing Committee</h2>
-        <ul>
-            <li>Goza, N.</li>
-    <li>Dorofeev, Sergey Nikolaevich</li>
-    <li>Ilyutko, Denis Petrovich</li>
-    <li>Kim, Seongjeong</li>
-    <li>Manturov, Vasily Olegovich</li>
-    <li>Chebukov, Dmitry Evgenyevich</li>
-    <li>Shamolin, Maxim Vladimirovich</li>
-        </ul>
-        
-<h2>Program Committee</h2>
-<ul>
-    <li>Bokut, Leonid Arkadievich</li>
-    <li>Buchstaber, Victor Matveevich</li>
-    <li>Kaufman, Louis</li>
-    <li>Manturov, Vasily Olegovich</li>
-    <li>Fomenko, Anatoly Timofeevich</li>
-    <li>Shamolin, Maxim Vladimirovich</li>
-</ul>
-<h2>Sessions</h2>
-<ul>
-    <li>Lie algebras and Homogeneous spaces</li>
-    <li>K-Theory and Topology</li>
-    <li>Product integral (multiplicative integral)</li>
-    <li>Knot theory</li>
-    <li>Mathematical education</li>
-</ul>
+    <ul>
+        <li>Goza, N.</li>
+        <li>Dorofeev, Sergey Nikolaevich</li>
+        <li>Ilyutko, Denis Petrovich</li>
+        <li>Kim, Seongjeong</li>
+        <li>Manturov, Vasily Olegovich</li>
+        <li>Chebukov, Dmitry Evgenyevich</li>
+        <li>Shamolin, Maxim Vladimirovich</li>
+    </ul>
+
+    <h2>Program Committee</h2>
+    <ul>
+        <li>Bokut, Leonid Arkadievich</li>
+        <li>Buchstaber, Victor Matveevich</li>
+        <li>Kaufman, Louis</li>
+        <li>Manturov, Vasily Olegovich</li>
+        <li>Fomenko, Anatoly Timofeevich</li>
+        <li>Shamolin, Maxim Vladimirovich</li>
+    </ul>
+
+    <h2>Sessions</h2>
+    <ul>
+        <li>Lie algebras and Homogeneous spaces</li>
+        <li>K-Theory and Topology</li>
+        <li>Product integral (multiplicative integral)</li>
+        <li>Knot theory</li>
+        <li>Mathematical education</li>
+    </ul>
 </div>
 
 <script>
     const titles = {
-        ru: 'Конференция, посвящённая 90-летию О. В. Мантурова',
+        ru: 'Конференция О. В. Мантурова – 90',
         en: 'O. V. Manturov 90 Conference'
     };
 
     function setLanguage(lang) {
-        // 언어 표시
-        document.querySelectorAll('.lang').forEach(el => {
-            el.classList.remove('active');
-        });
-
+        document.querySelectorAll('.lang').forEach(el => el.classList.remove('active'));
         const target = document.querySelector('.' + lang);
-        if (target) {
-            target.classList.add('active');
-        }
+        if (target) target.classList.add('active');
 
-        // 🔥 제목 강제 변경
         document.title = titles[lang] || titles.en;
-
-        // 저장
         localStorage.setItem('siteLanguage', lang);
 
-        // 🔥 일부 브라우저 대응용 (확실하게)
+        // 브라우저 호환성 보강
         setTimeout(() => {
             document.title = titles[lang] || titles.en;
         }, 0);
     }
 
-    // 최초 로드
     document.addEventListener('DOMContentLoaded', () => {
         const savedLang = localStorage.getItem('siteLanguage') || 'en';
         setLanguage(savedLang);
     });
 </script>
 
-
-
 </body>
 </html>
+
 
 
