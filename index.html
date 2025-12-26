@@ -104,10 +104,31 @@
 
 <script>
     function setLanguage(lang) {
-        document.querySelectorAll('.lang').forEach(el => el.classList.remove('active'));
-        document.querySelector('.' + lang).classList.add('active');
+        // 모든 언어 숨김
+        document.querySelectorAll('.lang').forEach(el => {
+            el.classList.remove('active');
+        });
+
+        // 선택한 언어 표시
+        const target = document.querySelector('.' + lang);
+        if (target) {
+            target.classList.add('active');
+        }
+
+        // 언어 저장
+        localStorage.setItem('siteLanguage', lang);
     }
+
+    // 페이지 로드 시 저장된 언어 적용
+    document.addEventListener('DOMContentLoaded', function () {
+        const savedLang = localStorage.getItem('siteLanguage');
+
+        if (savedLang) {
+            setLanguage(savedLang);
+        }
+    });
 </script>
+
 
 </body>
 </html>
