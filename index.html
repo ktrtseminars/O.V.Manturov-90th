@@ -1,160 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <base href=".">
-    <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
-    <link rel="stylesheet" type="text/css" media="all" href="assets/main.css"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <meta name="description" content="International conference dedicated to the 90th anniversary of O. V. Manturov">
-    <title>O. V. Manturov 90 Conference</title>
+  <!-- Project Pages base (IMPORTANT) -->
+  <base href="/O.V.Manturov-90th/" />
 
-    <style>
-        .lang { display: none; }
-        .lang.active { display: block; }
+  <link rel="shortcut icon" type="image/png" href="assets/favicon.png" />
+  <link rel="stylesheet" type="text/css" media="all" href="assets/main.css" />
 
-        .lang-switcher {
-            margin: 10px 20px;
-            text-align: right;
-        }
+  <meta name="description" content="International conference dedicated to the 90th anniversary of O. V. Manturov" />
+  <title>O. V. Manturov 90 Conference</title>
 
-        .lang-switcher button {
-            padding: 6px 12px;
-            margin-left: 6px;
-            cursor: pointer;
-        }
+  <style>
+    /* Language blocks */
+    .lang { display: none !important; }
+    .lang.active { display: block !important; }
 
-        /* ===== HEADER ABOVE NAV ===== */
-        #conference-header {
-            text-align: center;
-            margin: 20px 0 10px 0;
-        }
+    .lang-switcher {
+      margin: 10px 20px;
+      text-align: right;
+      position: relative;
+      z-index: 9999;
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
 
-        #conference-header h1 {
-            margin: 0;
-            font-size: 32px;
-            font-weight: normal;
-        }
+    .lang-switcher button {
+      padding: 6px 12px;
+      cursor: pointer;
+      border: 1px solid #bbb;
+      background: #fff;
+      border-radius: 6px;
+    }
 
-        table.navigation {
-            width: 100%;
-        }
-    </style>
+    .lang-switcher button.active {
+      border-color: #333;
+      font-weight: 600;
+    }
+
+    /* Header above nav */
+    #conference-header {
+      text-align: center;
+      margin: 20px 0 10px 0;
+    }
+
+    #conference-header h1 {
+      margin: 0;
+      font-size: 32px;
+      font-weight: normal;
+    }
+
+    table.navigation { width: 100%; }
+  </style>
 </head>
 
 <body>
+  <!-- LANGUAGE SWITCHER -->
+  <div class="lang-switcher" role="group" aria-label="Language switcher">
+    <button type="button" data-lang="ru" aria-pressed="false">Русский</button>
+    <button type="button" data-lang="en" aria-pressed="false">English</button>
+  </div>
 
-<!-- LANGUAGE SWITCHER -->
-<div class="lang-switcher">
-    <button onclick="setLanguage('ru')">Русский</button>
-    <button onclick="setLanguage('en')">English</button>
-</div>
-
-<!-- ===== CONFERENCE TITLE ABOVE BLUE BAR ===== -->
-<div id="conference-header">
+  <!-- CONFERENCE TITLE ABOVE BLUE BAR -->
+  <div id="conference-header">
     <h1 id="conferenceTitle">O. V. Manturov 90 Conference</h1>
-</div>
+  </div>
 
-<!-- ================= RUSSIAN VERSION ================= -->
-<div class="lang ru">
+  <!-- ================= RUSSIAN VERSION ================= -->
+  <div class="lang ru" lang="ru">
     <table class="navigation">
-        <tr>
-            <td class="navigation"><a class="navigation" href="."><p class="navigation">ГЛАВНАЯ</p></a></td>
-            <td class="navigation"><a class="navigation" href="schedule"><p class="navigation">РАСПИСАНИЕ</p></a></td>
-            <td class="navigation"><a class="navigation" href="program"><p class="navigation">ПРОГРАММА</p></a></td>
-        </tr>
+      <tr>
+        <td class="navigation"><a class="navigation" href="./"><p class="navigation">ГЛАВНАЯ</p></a></td>
+        <td class="navigation"><a class="navigation" href="schedule/"><p class="navigation">РАСПИСАНИЕ</p></a></td>
+        <td class="navigation"><a class="navigation" href="program/"><p class="navigation">ПРОГРАММА</p></a></td>
+      </tr>
     </table>
 
     <h2>Организационный комитет</h2>
     <ul>
-        <li>Сонгджон Ким</li>
-        <li>Имя Фамилия</li>
+      <li>Дорофеев, Сергей Николаевич</li>
+      <li>Ильютко, Денис Петрович</li>
+      <li>Ким, Сончжон</li>
+      <li>Мантуров, Василий Олегович</li>
+      <li>Шамолин, Максим Владимирович (член-корреспондент РАН)</li>
     </ul>
 
     <h2>Программный комитет</h2>
     <ul>
-        <li>Василий Мантуров</li>
-        <li>Имя Фамилия</li>
+      <li>Бокуть, Леонид Аркадьевич</li>
+      <li>Бухштабер, Виктор Матвеевич (член-корреспондент РАН)</li>
+      <li>Кауфман, Луис</li>
+      <li>Мантуров, Василий Олегович</li>
+      <li>Фоменко, Анатолий Тимофеевич (академик РАН)</li>
+      <li>Шамолин, Максим Владимирович (член-корреспондент РАН)</li>
     </ul>
 
     <h2>Секции</h2>
     <ul>
-        <li>Теория узлов</li>
-        <li>Виртуальные узлы и графы</li>
-        <li>Приложения и смежные области</li>
+      <li>Теория узлов</li>
+      <li>Виртуальные узлы и графы</li>
+      <li>Приложения и смежные области</li>
     </ul>
-</div>
+  </div>
 
-<!-- ================= ENGLISH VERSION ================= -->
-<div class="lang en active">
+  <!-- ================= ENGLISH VERSION ================= -->
+  <div class="lang en" lang="en">
     <table class="navigation">
-        <tr>
-            <td class="navigation"><a class="navigation" href="."><p class="navigation">HOME</p></a></td>
-            <td class="navigation"><a class="navigation" href="schedule"><p class="navigation">SCHEDULE</p></a></td>
-            <td class="navigation"><a class="navigation" href="program"><p class="navigation">PROGRAM</p></a></td>
-        </tr>
+      <tr>
+        <td class="navigation"><a class="navigation" href="./"><p class="navigation">HOME</p></a></td>
+        <td class="navigation"><a class="navigation" href="schedule/"><p class="navigation">SCHEDULE</p></a></td>
+        <td class="navigation"><a class="navigation" href="program/"><p class="navigation">PROGRAM</p></a></td>
+      </tr>
     </table>
 
     <h2>Organizing Committee</h2>
     <ul>
-        <li>Dorofeev, Sergey Nikolaevich</li>
-        <li>Ilyutko, Denis Petrovich</li>
-        <li>Kim, Seongjeong</li>
-        <li>Manturov, Vasily Olegovich</li>
-        <li>Shamolin, Maxim Vladimirovich</li>
+      <li>Dorofeev, Sergey Nikolaevich</li>
+      <li>Ilyutko, Denis Petrovich</li>
+      <li>Kim, Seongjeong</li>
+      <li>Manturov, Vasily Olegovich</li>
+      <li>Shamolin, Maxim Vladimirovich</li>
     </ul>
 
     <h2>Program Committee</h2>
     <ul>
-        <li>Bokut, Leonid Arkadievich</li>
-        <li>Buchstaber, Victor Matveevich</li>
-        <li>Kaufman, Louis</li>
-        <li>Manturov, Vasily Olegovich</li>
-        <li>Fomenko, Anatoly Timofeevich</li>
-        <li>Shamolin, Maxim Vladimirovich</li>
+      <li>Bokut, Leonid Arkadievich</li>
+      <li>Buchstaber, Victor Matveevich</li>
+      <li>Kaufman, Louis</li>
+      <li>Manturov, Vasily Olegovich</li>
+      <li>Fomenko, Anatoly Timofeevich</li>
+      <li>Shamolin, Maxim Vladimirovich</li>
     </ul>
 
     <h2>Sessions</h2>
     <ul>
-        <li>Lie algebras and Homogeneous spaces</li>
-        <li>K-Theory and Topology</li>
-        <li>Product integral (multiplicative integral), geometry and mechanics.</li>
-        <li>Knot theory</li>
-        <li>Mathematical education</li>
+      <li>Lie algebras and Homogeneous spaces</li>
+      <li>K-Theory and Topology</li>
+      <li>Product integral (multiplicative integral), geometry and mechanics.</li>
+      <li>Knot theory</li>
+      <li>Mathematical education</li>
     </ul>
-</div>
+  </div>
 
-<script>
+  <script>
     const titles = {
-        ru: 'Конференция, посвящённая 90-летию О. В. Мантурова',
-        en: 'Homogeneous spaces, Topology, and Mathematical Education. Conference dedicated to O.V.Manturov's birthday.'
+      ru: 'Конференция, посвящённая 90-летию О. В. Мантурова',
+      en: "Homogeneous spaces, Topology, and Mathematical Education. Conference dedicated to O.V. Manturov's birthday."
     };
 
+    function safeGet(key) {
+      try { return localStorage.getItem(key); } catch (e) { return null; }
+    }
+    function safeSet(key, val) {
+      try { localStorage.setItem(key, val); } catch (e) {}
+    }
+
     function setLanguage(lang) {
-        document.querySelectorAll('.lang').forEach(el => el.classList.remove('active'));
-        const target = document.querySelector('.' + lang);
-        if (target) target.classList.add('active');
+      // show/hide blocks
+      document.querySelectorAll('.lang').forEach(el => el.classList.remove('active'));
+      const target = document.querySelector('.lang.' + lang);
+      if (target) target.classList.add('active');
 
-        // Header title above blue bar
-        const headerTitle = document.getElementById('conferenceTitle');
-        if (headerTitle && titles[lang]) {
-            headerTitle.textContent = titles[lang];
-        }
+      // header title
+      const headerTitle = document.getElementById('conferenceTitle');
+      if (headerTitle && titles[lang]) headerTitle.textContent = titles[lang];
 
-        // Browser tab title
-        document.title = titles[lang] || titles.en;
+      // tab title
+      document.title = titles[lang] || titles.en;
 
-        localStorage.setItem('siteLanguage', lang);
+      // buttons active state
+      document.querySelectorAll('.lang-switcher button').forEach(btn => {
+        const on = btn.dataset.lang === lang;
+        btn.classList.toggle('active', on);
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+
+      safeSet('siteLanguage', lang);
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        const savedLang = localStorage.getItem('siteLanguage') || 'en';
-        setLanguage(savedLang);
-    });
-</script>
+      // wire buttons
+      document.querySelectorAll('.lang-switcher button').forEach(btn => {
+        btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+      });
 
+      const saved = safeGet('siteLanguage');
+      setLanguage(saved || 'en');
+    });
+  </script>
 </body>
 </html>
+
 
 
 
