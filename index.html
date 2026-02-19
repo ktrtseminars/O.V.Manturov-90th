@@ -147,8 +147,14 @@
 
   <script>
     const titles = {
-      ru: 'Конференция, посвящённая 90-летию О. В. Мантурова',
-      en: "Homogeneous spaces, Topology, and Mathematical Education. <br>Conference dedicated to O.V. Manturov's birthday."
+        ru: {
+            title: 'Конференция, посвящённая 90-летию О. В. Мантурова',
+            subtitle: ''  // 필요하면 러시아어 부제 추가
+        },
+        en: {
+            title: 'Homogeneous spaces, Topology, and Mathematical Education',
+            subtitle: "Conference dedicated to O.V. Manturov's birthday"
+        }
     };
 
     function safeGet(key) {
