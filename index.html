@@ -41,7 +41,7 @@
       font-weight: 600;
     }
 
-    /* Header above nav */
+    /* Header above nav (BLUE BAR ABOVE) */
     #conference-header {
       text-align: center;
       margin: 20px 0 10px 0;
@@ -51,6 +51,13 @@
       margin: 0;
       font-size: 32px;
       font-weight: normal;
+      line-height: 1.2;
+    }
+
+    #conferenceSubtitle {
+      margin-top: 6px;
+      font-size: 16px;
+      color: #555;
     }
 
     table.navigation { width: 100%; }
@@ -67,6 +74,7 @@
   <!-- CONFERENCE TITLE ABOVE BLUE BAR -->
   <div id="conference-header">
     <h1 id="conferenceTitle">O. V. Manturov 90 Conference</h1>
+    <div id="conferenceSubtitle"></div>
   </div>
 
   <!-- ================= RUSSIAN VERSION ================= -->
@@ -139,22 +147,23 @@
     <ul>
       <li>Lie algebras and Homogeneous spaces</li>
       <li>K-Theory and Topology</li>
-      <li>Product integral (multiplicative integral), geometry and mechanics.</li>
+      <li>Product integral (multiplicative integral), geometry and mechanics</li>
       <li>Knot theory</li>
       <li>Mathematical education</li>
     </ul>
   </div>
 
   <script>
+    // Header + tab titles per language
     const titles = {
-        ru: {
-            title: 'Конференция, посвящённая 90-летию О. В. Мантурова',
-            subtitle: ''  // 필요하면 러시아어 부제 추가
-        },
-        en: {
-            title: 'Homogeneous spaces, Topology, and Mathematical Education',
-            subtitle: "Conference dedicated to O.V. Manturov's birthday"
-        }
+      ru: {
+        title: 'Конференция, посвящённая 90-летию О. В. Мантурова',
+        subtitle: ''
+      },
+      en: {
+        title: 'Homogeneous spaces, Topology, and Mathematical Education',
+        subtitle: "Conference dedicated to O.V. Manturov's birthday."
+      }
     };
 
     function safeGet(key) {
@@ -165,19 +174,30 @@
     }
 
     function setLanguage(lang) {
-      // show/hide blocks
+      // Fallback
+      if (!titles[lang]) lang = 'en';
+
+      // Show/hide language blocks
       document.querySelectorAll('.lang').forEach(el => el.classList.remove('active'));
       const target = document.querySelector('.lang.' + lang);
       if (target) target.classList.add('active');
 
-      // header title
+      // Update header title + subtitle (ABOVE blue bar)
       const headerTitle = document.getElementById('conferenceTitle');
-      if (headerTitle && titles[lang]) headerTitle.textContent = titles[lang];
+      const headerSubtitle = document.getElementById('conferenceSubtitle');
 
-      // tab title
-      document.title = titles[lang] || titles.en;
+      if (headerTitle) headerTitle.textContent = titles[lang].title;
 
-      // buttons active state
+      if (headerSubtitle) {
+        const sub = titles[lang].subtitle || '';
+        headerSubtitle.textContent = sub;
+        headerSubtitle.style.display = sub ? 'block' : 'none';
+      }
+
+      // Update browser tab title (one line)
+      document.title = titles[lang].title;
+
+      // Buttons active state
       document.querySelectorAll('.lang-switcher button').forEach(btn => {
         const on = btn.dataset.lang === lang;
         btn.classList.toggle('active', on);
@@ -188,19 +208,15 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      // wire buttons
+      // Wire buttons
       document.querySelectorAll('.lang-switcher button').forEach(btn => {
         btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
       });
 
+      // Init with stored language (default EN)
       const saved = safeGet('siteLanguage');
       setLanguage(saved || 'en');
     });
   </script>
 </body>
 </html>
-
-
-
-
-
